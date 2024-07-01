@@ -1,0 +1,86 @@
+﻿@model RitualServer.Model.Tape
+@{
+    ViewBag.Title = Model.Product.Name;
+}
+<style>
+    .image-container {
+        flex-shrink: 0;
+    }
+
+    .custom-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: gold;
+        color: black;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        border-radius: 20px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .nazv {
+        font-size: 17px;
+        font-weight: 500;
+    }
+
+    .value {
+        font-size: 15px;
+    }
+
+    .containers {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 800px;
+        padding-left: 80px;
+        padding-right: 80px;
+    }
+
+        .containers > div {
+            margin: 10px;
+        }
+
+        .containers span {
+            display: block;
+        }
+</style>
+<div class="containers">
+    <div class="image-container" style="float:left">
+        @if (Model.Image != null && Model.Image.Length > 0)
+        {
+            <img class="category-image" src="data:image;base64,@Convert.ToBase64String(Model.Image)" alt="Изображение" style="width:400px;height:500px;" />
+        }
+        else
+        {
+            <div style="width:400px;height:500px">
+                <span>Нет изображения</span>
+            </div>
+        }
+    </div>
+    <div class="text-block" style="float:right; width:500px;height:500px;display:flex;align-content:center;justify-content:center;flex-wrap: wrap;flex-direction: column;">
+        <div style="display:inline-block">
+            <span class="nazv">Название:</span>
+            <span class="value">@Html.DisplayFor(model => model.Product.Name)</span>
+        </div>
+        <div>
+            <span class="nazv">Материал:</span>
+            <span class="value">@Html.DisplayFor(model => model.Material.Name)</span>
+        </div>
+        <div>
+            <span class="nazv">Цвет:</span>
+            <span class="value">@Html.DisplayFor(model => model.Color.Name)</span>
+        </div>
+        <div>
+
+            <button type="button" class="custom-button" data-bs-toggle="modal" data-bs-target="#orderModal" data-product-id="@Model.ProductId">
+                Оформить заказ
+            </button>
+
+        </div>
+    </div>
+
+</div>
+<partial name="CreateOrder" model="new RitualServer.Model.Shipment()" />

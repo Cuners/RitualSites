@@ -1,0 +1,73 @@
+﻿@model RitualServer.Model.Shipment
+<div class="modal fade" id="orderModal" tabindex="-1" role="dialog" aria-labelledby="orderModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="orderModalLabel">Оформление заказа</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form asp-controller="Products" asp-action="CreateOrder" method="post">
+                    <input id="productId" name="productId" style="visibility:hidden"/>
+                    <div class="form-group">
+                        <label asp-for="ShipmentDate" for="date">Дата</label>
+                        <input type="date" class="form-control" required asp-for="ShipmentDate"
+                               min="@DateTime.Today.ToString("yyyy-MM-dd")">
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Address">Адрес</label>
+                        <input type="text" asp-for="Address" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="UserName">ФИО</label>
+                        <input type="text" id="UserName" name="UserName" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="UserEmail">Email</label>
+                        <input type="email" id="UserEmail" name="UserEmail" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="UserPhone">Телефон</label>
+                        <input type="tel" id="UserPhone" name="UserPhone" class="form-control" required>
+                    </div>
+                    <div class="form-group text-center mt-4">
+                        <button type="submit" class="btn btn-primary float-left">Отправить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var orderModal = document.getElementById('orderModal');
+        orderModal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget;
+            var productId = button.getAttribute('data-product-id'); 
+            var modal = event.target;
+            var productIdInput = modal.querySelector('.modal-body input#productId');
+            productIdInput.value = productId;
+        });
+    });
+</script>
+<style>
+    .close {
+        color: #aaa;
+        float: right;
+        background: none;
+        border: none;
+        width: 40px;
+        height: 40px;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+</style>

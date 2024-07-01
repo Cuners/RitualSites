@@ -1,0 +1,36 @@
+﻿<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/CemetriesStyle.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/WebApplication1.styles.css" asp-append-version="true" />
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=0fc34d81-48e6-4067-a8d2-9e5a20db5b05" type="text/javascript"></script>
+    <script src="~/js/mapsMorg.js" type="text/javascript" asp-append-version="true"></script>
+</head>
+<div style="padding-left:80px;padding-right:80px;margin-bottom:20px">
+    <span style="font-size:30px;font-weight:bold">Морги Казани</span>
+    <div>
+        <a asp-action="Cemetries" asp-controller="InfoMap" style="text-decoration:none">
+            <div class="choose-button">Кладбища</div>
+        </a>
+        <div class="choose-button active">Морги</div>
+    </div>
+</div>
+<div class="mapcontainer">
+    <div id="map"></div>
+    <div class="buttons-container">
+        <div>
+            <button data-address="Казань Республиканская клиническая больница №2, Муштари 13" class="custom-button">Больница №2</button>
+            <button data-address="Казань Паталого-анатомическое отделение Республиканской психиатрической больницы на ул. Николая Ершова 49" class="custom-button">Паталого-анатомическое отделение</button>
+            <button data-address="Казань Республиканское бюро судебно-медицинской экспертизы на Сибирский тракт 31а" class="custom-button">Республиканское бюро судебно-медицинской экспертизы</button>
+            <button data-address="Казань Городская клиническая больница №7 на улице Маршала Чуйкова 54" class="custom-button">Городская клиническая больница №7</button>
+            <button data-address="Казань Паталого-анатомическое отделение ДРКБ - Оренбургский тракт 140" class="custom-button">Паталого-анатомическое отделение ДРКБ</button>
+            <button data-address="Казань Республиканская клиническая больница паталого-анатомическое отделение - Оренбургский тракт 138, корп.Л" class="custom-button">Республиканская клиническая больница паталого-анатомическое отделение</button>
+            <button data-address="Казань ДРКБ №12 Паталого-анатомическое отделение - ул. Лечебная 7" class="custom-button">ДРКБ №12 Паталого-анатомическое отделение</button>
+            <button data-address="Казань Морг онкологического диспансера - Сибирский тракт 29" class="custom-button">Морг онкологического диспансера</button>
+            <button data-address="Казань Межрегиональный клинико-диагностический центр (МКДЦ) - ул. Карбышева 12а" class="custom-button">Межрегиональный клинико-диагностический центр</button>
+            <button data-address="Приемная: г. Казань, Пр. Победы, 69 Б" class="custom-button">Казанский тубдиспансер</button>
+        </div>
+        
+    </div>
+</div>

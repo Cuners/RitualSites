@@ -1,0 +1,149 @@
+﻿
+
+<style>
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+
+    .slider {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .slides {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    .slide {
+        min-width: 100%;
+        box-sizing: border-box;
+        padding: 20px;
+    }
+
+    h2 {
+        margin-top: 0;
+    }
+
+    p {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    img {
+        width: 100%;
+        height: 500px; /* Set a fixed height */
+        object-fit: cover; /* Ensures aspect ratio is maintained */
+        border-radius: 8px;
+        margin-top: 20px;
+    }
+
+    .navigation {
+        display: flex;
+        justify-content: space-between;
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        transform: translateY(-50%);
+        opacity:0;
+        transition: opacity 0.5s ease;
+    }
+
+    .slider:hover .navigation {
+        opacity:1;
+    }
+        .navigation button {
+            background-color: gold;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+            .navigation button:hover {
+                background-color: orange;
+            }
+
+            .navigation button:disabled {
+                background-color: #cccccc;
+                cursor: default;
+            }
+
+</style>
+<div class="container">
+    <h1>Действия при наступлении смерти человека</h1>
+    <div class="slider">
+        <div class="slides">
+            <div class="slide">
+                <h2>Шаг 1: Вызовите скорую помощь или врача</h2>
+                <p>Первым делом при наступлении смерти человека необходимо вызвать скорую помощь или врача. Медицинский специалист зафиксирует факт смерти и выдаст соответствующее заключение.</p>
+                <img src="https://gas-kvas.com/grafic/uploads/posts/2023-10/1696421040_gas-kvas-com-p-kartinki-skoroi-pomoshchi-54.jpg" alt="Вызов скорой помощи">
+            </div>
+            <div class="slide">
+                <h2>Шаг 2: Сообщите о случившемся в полицию</h2>
+                <p>Если смерть произошла вне медицинского учреждения, необходимо сообщить о случившемся в полицию. Сотрудники полиции составят протокол осмотра места происшествия.</p>
+                <img src="https://old.novreg.ru/upload/iblock/a4d/001.jpg" alt="Сообщение в полицию">
+            </div>
+            <div class="slide">
+                <h2>Шаг 3: Свяжитесь с ритуальной службой</h2>
+                <p>Свяжитесь с ритуальной службой для организации похорон. Специалисты помогут вам с оформлением всех необходимых документов и подготовкой к церемонии прощания.</p>
+                <img src="https://static.tildacdn.com/tild3530-3961-4830-a430-326563326633/8-1.jpg" alt="Связь с ритуальной службой">
+            </div>
+            <div class="slide">
+                <h2>Шаг 4: Оформление свидетельства о смерти</h2>
+                <p>Для оформления свидетельства о смерти необходимо обратиться в ЗАГС с медицинским заключением о смерти и паспортом умершего. После этого вы получите официальное свидетельство о смерти.</p>
+                <img src="https://i.pinimg.com/originals/df/c3/c0/dfc3c09e2040c148720d04c169cf5b3a.jpg" alt="Оформление свидетельства о смерти">
+            </div>
+            <div class="slide">
+                <h2>Шаг 5: Организация похорон</h2>
+                <p>Ритуальная служба поможет вам с выбором места захоронения, подготовкой церемонии прощания и всеми необходимыми мероприятиями для достойного прощания с умершим.</p>
+                <img src="https://static.tildacdn.com/tild3530-3961-4830-a430-326563326633/8-1.jpg" alt="Организация похорон">
+            </div>
+        </div>
+        <div class="navigation">
+            <button id="prev" onclick="moveSlide(-1)" disabled>&lt;</button>
+            <button id="next" onclick="moveSlide(1)">&gt;</button>
+        </div>
+    </div>
+</div>
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelector('.slides');
+    const totalSlides = document.querySelectorAll('.slide').length;
+    const prevButton = document.getElementById('prev');
+    const nextButton = document.getElementById('next');
+
+    function moveSlide(direction) {
+        currentSlide += direction;
+
+        if (currentSlide <= 0) {
+            currentSlide = 0;
+            prevButton.disabled = true;
+        } else {
+            prevButton.disabled = false;
+        }
+
+        if (currentSlide >= totalSlides - 1) {
+            currentSlide = totalSlides - 1;
+            nextButton.disabled = true;
+        } else {
+            nextButton.disabled = false;
+        }
+
+        slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+</script>

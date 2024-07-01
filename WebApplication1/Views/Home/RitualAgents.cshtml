@@ -1,0 +1,128 @@
+﻿@model IEnumerable<RitualServer.Model.User>
+@{
+    ViewBag.Title = "Ритуальные агенты";
+}
+<style>
+
+        .incontainer {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            margin-left: 80px;
+            margin-right:80px;
+            flex-wrap: wrap;
+        }
+        .card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 10px;
+            width: 330px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .card img {
+            border-radius: 50%;
+            width: 300px;
+            height: 400px;
+            object-fit: cover;
+        }
+        .name {
+            font-weight: bold;
+            margin: 15px 0 5px;
+            font-size:20px;
+        }
+        .role {
+            color: #555;
+            margin-bottom: 15px;
+        }
+        .contacts {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+    .contacts ul {
+        padding: 0;
+        margin: 0;
+        display: flex;
+    }
+
+            .contacts ul li {
+            list-style: none;
+            margin: 0 20px;
+        }
+
+                .contacts ul li .fa {
+                color: #000000;
+                font-size: 20px;
+                line-height: 40px;
+                transition: .5s;
+            }
+
+                    .contacts ul li .fa:hover {
+                    color: #ffffff;
+                }
+
+                .contacts ul li a {
+                position: relative;
+                display: block;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background-color: white;
+                text-align: center;
+                transition: 0.5s;
+                transform: translate(0,0px);
+                box-shadow: 0px 7px 5px rgba(0, 0, 0, 0.5);
+            }
+
+                    .contacts ul li a:hover {
+                    transform: rotate(0deg) skew(0deg) translate(0, -10px);
+                }
+
+                .contacts ul li:nth-child(1) a:hover {
+                background-color: #55acee;
+            }
+
+                .contacts ul li:nth-child(2) a:hover {
+                background-color: #3b5999;
+            }
+
+                .contacts ul li:nth-child(3) a:hover {
+                background-color: #5FFC7B;
+            }
+
+    .socLinks {
+        color: #808080;
+        font-size: 20px;
+    }
+    </style>
+<div class="incontainer">
+
+        @foreach (var user in Model)
+        {
+            <div class="card">
+                @if (user.Image != null && user.Image.Length > 0)
+                {
+                    <img src="data:image;base64,@Convert.ToBase64String(user.Image)" alt="Изображение">
+                }
+                else
+                {
+                    <div style="width:300px;height:400px;text-align:center">
+                        <span>Нет изображения</span>
+                    </div>
+
+                }
+                <div class="name">@user.FirstName @user.LastName</div>
+                <div class="role">Ритуальный агент</div>
+                <div class="contacts">
+                <ul>
+                    <li><a target="_self" href="tel:@user.Phone"><i class="fa fa-phone"></i></a></li>
+                </ul>
+                    <span style="font-size:20px">@user.Phone</span>
+                </div>
+            </div>
+        }
+    
+</div>

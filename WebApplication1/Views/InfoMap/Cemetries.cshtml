@@ -1,0 +1,50 @@
+﻿<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/CemetriesStyle.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/WebApplication1.styles.css" asp-append-version="true" />
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=0fc34d81-48e6-4067-a8d2-9e5a20db5b05" type="text/javascript"></script>
+    <script src="~/js/mapsCemet.js" type="text/javascript" asp-append-version="true"></script>
+</head>
+<div style="padding-left:80px;padding-right:80px;margin-bottom:20px">
+    <span style="font-size:30px;font-weight:bold">Кладбища Казани</span>
+    <div>
+        <button class="choose-button active">Кладбища</button>
+        <a asp-action="Morgues" asp-controller="InfoMap" style="text-decoration:none">
+            <div class="choose-button">Морги</div>
+        </a>
+    </div>
+</div>
+<div class="mapcontainer">
+    <div id="map"></div>
+    <div class="buttons-container">
+        <div>
+            <h3>Советский район</h3>
+            <button data-address="Казань ул. Мамадышский тракт, Самосыровское кладбище" class="custom-button">Самосырово</button>
+            <button data-address="Казань, кладбище Киндери" class="custom-button">Киндери</button>
+            <button data-address="пос.Дербышки ул. Прибольничная 2" class="custom-button">Дербышки</button>
+            <button data-address="Казань ул. Владимирская 1-я 42Б" class="custom-button">Царицино</button>
+        </div>
+        <div>
+            <h3>Кировский район</h3>
+            <button data-address="Казань ул. Окольная" class="custom-button">Окольное</button>
+            <button data-address="Юдинское кладбище" class="custom-button">Юдино</button>
+            <button data-address="Казань ул. Привокзальная Красная Горка" class="custom-button">Красная горка</button>
+        </div>
+        <div>
+            <h3>Авиастроительный район</h3>
+            <button data-address="Казань ул. Песочная 1а" class="custom-button">Сухая река</button>
+        </div>
+        <div>
+            <h3>Приволжский район</h3>
+            <button data-address="Казань ул. Новосельская 64" class="custom-button">Мирный</button>
+            <button data-address="Казань, Мусульманское кладбище" class="custom-button">Мусульманское</button>
+            <button data-address="Казань, Архангельское кладбище" class="custom-button">Архангельское</button>
+        </div>
+        <div>
+            <h3>Вахитовский район</h3>
+            <button data-address="Казань ул. Николая Ершова, д. 25" class="custom-button">Арское</button>
+        </div>
+    </div>
+</div>

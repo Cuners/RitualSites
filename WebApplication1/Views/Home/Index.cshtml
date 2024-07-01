@@ -1,0 +1,169 @@
+﻿
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/IndexStyle.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/WebApplication1.styles.css" asp-append-version="true" />
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=0fc34d81-48e6-4067-a8d2-9e5a20db5b05" type="text/javascript"></script>
+    <script src="~/js/direct.js" type="text/javascript" asp-append-version="true"></script>
+</head>
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" style="left:40%; position:absolute" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="background-color:none;border:0px">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+<div class="containers" style="overflow: hidden;">
+    <div style="float:left">
+        <div>
+            <span style="font-weight:500; font-size:30px;margin-bottom:20px;">Организация похорон</span>
+            <span style="font-weight:500; font-size:30px;margin-bottom:20px;">в Казани</span>
+        </div>
+        <div>
+            <span style="color:gray">Ритуальные услуги максимально быстро и в</span>
+            <span style="color:gray;margin-bottom:20px;">соответствии с высокими стандартами качества</span>
+        </div>
+        <div>
+            <button class="custom-button">Вызвать ритуального агента</button>
+        </div>
+    </div>
+    <div style="margin-right:140px">
+        <img src="https://cdn-icons-png.flaticon.com/128/6535/6535164.png" alt="Image" style="width:200%; height:200%;">
+    </div>
+
+</div>
+<div class="Boxes">
+    <div class="box">
+        <a asp-action="ActionsWhen" asp-controller="Home" style="text-decoration:none">
+            <div>
+                <div class="FirstDivBox">
+
+                    <span>Действия при наступлении</span>
+                    <span>смерти близкого человека</span>
+                </div>
+                <div class="SecondDivBox">
+                    <span>Порядок ваших действий в экстренных ситуациях</span>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="box2Boxes">
+        <a asp-area="" asp-action="Categories" asp-controller="Products" style="text-decoration:none;display:inline">
+            <div>
+                <div class="FirstDivBox">
+                    <span>Товары от нас</span>
+                </div>
+                <div class="SecondDivBox">
+                    <span>Различные товары на ваши нужды</span>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+<div style="margin-left:80px;margin-right:80px;margin-top:20px">
+    <span style="font-size:30px;font-weight:bold">Наши услуги связанные с похоронами</span>
+    <div class="Boxes2">
+        <div class="box2">
+            <a asp-action="ActionsWhen" asp-controller="Home" style="text-decoration:none">
+                <div style="display: flex;">
+                    <img src="https://cdn-icons-png.flaticon.com/128/6535/6535164.png" alt="Image" style="width: 50px; height: 50px; margin-right: 10px;">
+                    <div>
+                        <div class="FirstDivBox2">
+                            <span>Похороны</span>
+                        </div>
+                        <div class="SecondDivBox2">
+                            <span>Церемония погребения и прощания</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="box2" >
+            <a asp-action="Services" asp-controller="Services" style="text-decoration:none">
+                <div style="display: flex;">
+                    <img src="https://cdn-icons-png.flaticon.com/128/4056/4056906.png" alt="Image" style="width: 50px; height: 50px; margin-right: 10px;">
+                    <div>
+                        <div class="FirstDivBox2">
+                            <span>Кремация</span>
+                        </div>
+                        <div class="SecondDivBox2">
+                            <span>Помощь в кремации и перевозке</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="box2" >
+            <a asp-action="Services" asp-controller="Services" style="text-decoration:none">
+                <div style="display: flex;">
+                    <img src="https://cdn-icons-png.flaticon.com/128/3097/3097148.png" alt="Image" style="width: 50px; height: 50px; margin-right: 10px;">
+                    <div>
+                        <div class="FirstDivBox2">
+                            <span>Транспорт</span>
+                        </div>
+                        <div class="SecondDivBox2">
+                            <span>Транспорт для перевозки умерших</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="box2">
+            <a asp-action="Products" asp-controller="Categories" style="text-decoration:none">
+                <div style="display: flex;">
+                    <img src="https://cdn-icons-png.flaticon.com/128/3638/3638920.png" alt="Image" style="width: 50px; height: 50px; margin-right: 10px;">
+                    <div>
+                        <div class="FirstDivBox2">
+                            <span>Товары от нас</span>
+                        </div>
+                        <div class="SecondDivBox2">
+                            <span>Различные товары на ваши нужды</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="box2" >
+            <a asp-action="RitualAgents" asp-controller="Home" style="text-decoration:none">
+                <div style="display: flex;">
+                    <img src="https://cdn-icons-png.flaticon.com/128/7588/7588291.png" alt="Image" style="width: 50px; height: 50px; margin-right: 10px;">
+                    <div>
+                        <div class="FirstDivBox2">
+                            <span>Ритуальные агенты</span>
+                        </div>
+                        <div class="SecondDivBox2">
+                            <span>Позвоните ритуальному агенту</span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </a>
+        </div>
+        <div class="box2" >
+            <a asp-action="Reviews" asp-controller="Home" style="text-decoration:none">
+                <div style="display: flex;">
+                    <img src="https://cdn-icons-png.flaticon.com/128/707/707675.png" alt="Image" style="width: 50px; height: 50px; margin-right: 10px;">
+                    <div>
+                        <div class="FirstDivBox2">
+                            <span>Отзывы</span>
+                        </div>
+                        <div class="SecondDivBox2">
+                            <span>Оставьте отзыв о нашей компании</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<div style="padding-left:80px;padding-right:80px">
+        <span style="font-size:30px;font-weight:bold">Наше расположение</span>
+</div>
+<div id="map" style="height:400px;padding-left:70px;padding-right:70px"></div>
+
+    
+

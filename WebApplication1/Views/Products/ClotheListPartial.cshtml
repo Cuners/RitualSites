@@ -1,0 +1,23 @@
+﻿@model IEnumerable<RitualServer.Model.Clothe>
+<div class="category-container">
+    @foreach (var category in Model)
+    {
+        <a class="category-link" asp-action="InfoCloth" asp-controller="Products" asp-route-id="@category.ClothId">
+            <div class="category">
+                @if (category.Image != null && category.Image.Length > 0)
+                {
+                    <img class="category-image" src="data:image;base64,@Convert.ToBase64String(category.Image)" alt="Изображение" />
+                }
+                else
+                {
+                    <div style="width:390px;height:200px">
+                        <span>Нет изображения</span>
+                    </div>
+                }
+                <div class="separator"></div>
+                <div class="category-name">@category.Product.Name</div>
+            </div>
+        </a>
+
+    }
+</div>

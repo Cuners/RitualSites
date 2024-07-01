@@ -1,0 +1,61 @@
+﻿
+.mapcontainer {
+    display: flex;
+    margin: 0;
+    padding-left: 70px;
+}
+
+#map {
+    flex: 3;
+    height: 70vh;
+}
+.buttons-container {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    padding: 20px;
+    background-color: #f8f8f8;
+    align-content: center;
+}
+
+.custom-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: gold;
+    color: black;
+    width:200px;
+    margin:10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .custom-button:hover {
+        background-color: orange;
+    }
+.choose-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: gold;
+    color: black;
+    width: 200px;
+    margin-right: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+    .choose-button:hover {
+        background-color: orange;
+    }
+.choose-button.active {
+    background-color: orange;
+}

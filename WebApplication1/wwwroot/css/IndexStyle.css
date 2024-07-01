@@ -1,0 +1,154 @@
+﻿
+.containers {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    align-items:center;
+    height: 350px;
+    background-color: #f0f0f0;
+    padding-left: 80px; 
+    padding-right: 80px;
+}
+
+    .containers > div {
+        margin: 10px; 
+    }
+    .containers span {
+        display: block;
+    }
+.custom-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: gold; 
+    color: black; 
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 20px; 
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
+}
+
+    .custom-button:hover {
+        background-color: orange; 
+    }
+.Boxes {
+    display: flex;
+    margin-left: 80px;
+    margin-right: 80px;
+    margin-top: 20px;
+}
+/*.box {
+    border: 2px solid #ccc;
+    padding: 20px;
+    margin-left:80px;
+    width: 48%;
+    border-radius: 15px;
+    display: inline-block;
+    text-align: center;
+}*/
+.box {
+    border: 2px solid #ccc;
+    padding: 20px;
+    flex: 1; 
+    text-align: center;
+    border-radius:20px;
+}
+    .box>a,.box2Boxes > a {
+        text-decoration: none;
+        color: #333;
+    }
+
+    .box>div,.box2Boxes > div {
+        margin-top: 10px;
+        align-items: center;
+    }
+.box2Boxes {
+    border: 2px solid #ccc;
+    padding: 20px;
+    flex: 1; 
+    text-align: center;
+    border-radius: 20px;
+    margin-left:50px;
+}
+
+
+    .box span {
+        display: block; 
+    }
+.Boxes2 {
+    display: flex;
+    flex-wrap: wrap;
+    position:relative;
+    justify-content:center;
+}
+
+.box2 {
+    display:flex;
+    flex-direction:column;
+    width:31.33%;
+    min-width:20%;
+    border: 2px solid #ccc;
+    border-radius:20px;
+    padding: 20px;
+    text-align: left;
+    margin:15px;
+}
+
+    .box2 > a {
+        text-decoration: none;
+        color: #333;
+    }
+
+    .box2 > div {
+        margin-top: 10px;
+    }
+.FirstDivBox {
+    margin-bottom:10px;
+}
+    .FirstDivBox span{
+        font-weight:bold;
+        font-size:30px;
+    }
+    .SecondDivBox span{
+        color:gray;
+    }
+.FirstDivBox2 {
+    margin-bottom: 10px;
+}
+
+    .FirstDivBox2 span {
+        font-weight: 500;
+        font-size: 20px;
+    }
+
+.SecondDivBox2 span {
+    color: gray;
+}
+@media screen and (max-width: 991px) {
+
+    .box2 {
+        width: 40%;
+    }
+
+    .box2Boxes {
+        margin-left: 0px;
+    }
+}
+        @media screen and (max-width: 600px) {
+            .Boxes {
+                flex-direction: column; 
+            }
+            .Boxes2 {
+                flex-direction: column; 
+                
+            }
+            .box2{
+                width:100%;
+            }
+            .box2Boxes{
+                margin-left:0px;
+            }
+    }
+

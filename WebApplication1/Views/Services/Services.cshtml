@@ -1,0 +1,56 @@
+﻿@model IEnumerable<RitualServer.Model.Service>
+
+@{
+    ViewBag.Title = "Услуги";
+    IEnumerable<RitualServer.Model.CategoiresService> categories = ViewData["Categories"] as IEnumerable<RitualServer.Model.CategoiresService>;
+}
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/ServiesPagesStyle.css" asp-append-version="true" />
+</head>
+<div class="containerin">
+
+    <div class="filters-container">
+
+        <form id="filterForm" method="get" class="filter" action="@Url.Action("Services", "Services")">
+            <div class="category-container" id="services-container">
+                <div class="form_radio_btn">
+
+                    <input id="all" type="radio" name="categoryFilter" value="all" checked />
+                    <label for="all">Все услуги</label>
+                </div>
+                @foreach (var category in categories)
+                {
+                    <div class="form_radio_btn">
+                        <input id="@category.Name" type="radio" name="categoryFilter" value="@category.Name" />
+                        <label for="@category.Name">@category.Name</label>
+                    </div>
+                }
+            </div>
+        </form>
+    </div>
+    <div id="servicesListContainer">
+        @Html.Partial("ServicesListPartial", Model)
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('input[name="categoryFilter"]').change(function () {
+            var selectedCategory = $(this).val();
+            $.ajax({
+                url: '@Url.Action("Services", "Services")',
+                type: 'GET',
+                data: { categoryName: selectedCategory},
+                success: function (data) {
+                    $('#servicesListContainer').html(data);
+                },
+                error: function () {
+                    alert('Error fetching data');
+                }
+            });
+        });
+    });
+</script>

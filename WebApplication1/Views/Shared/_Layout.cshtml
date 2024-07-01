@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WebApplication1</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" >
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="~/WebApplication1.styles.css" asp-append-version="true" />
+    <link rel="icon" type="image/x-icon" href="~/iconRitual.ico">
+
+</head>
+<body style="overflow:scroll;position:relative">
+    
+    <header class="header">
+        <div class="navigation-panel">
+            <div class="left-section">
+                <span>г. Казань ул. Декабирстов, д.10</span>
+            </div>
+            <div class="right-section">
+                <div class="hotline">
+                    <span class="spanhotline">Круглосуточная горячая линия:</span>
+                    <a target="_self" href="tel:8(800)888-88-88">
+                        <span>8 (800) 888-88-88</span>
+                    </a>
+                </div>
+                <div class="additional-info">
+                    <button class="more-button" id="openModalBtn">еще</button>
+                </div>
+            </div>
+        </div>
+        <div>
+
+        </div>
+        
+    </header>
+    <div class="navigation-panel2">
+        <div class="logo">
+            <a asp-action="Index" asp-controller="Home" style="text-decoration:none">
+                <div>
+                    <div>
+                        <span class="spanLogo1">Ритуал</span>
+                    </div>
+                    <div>
+                        <span class="spanLogo2">Памятники и ритуальные принадлежности</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a asp-action="Index" asp-controller="Home" style="text-decoration:none;font-weight:bold"><span class="@(ViewContext.RouteData.Values["action"].ToString() == "Index" ? "active" : "")">Главная</span></a></li>
+                @* <li><a asp-area="" asp-action="Categories" asp-controller="Home" style="text-decoration:none"><span class="@(ViewContext.RouteData.Values["action"].ToString() == "Categories" ? "active" : "")">Товары</span></a></li> *@
+                <li class="dropdown">
+                    <a asp-area="" asp-action="Categories" asp-controller="Products" style="text-decoration:none;display:inline">
+                        <div style="display:inline">
+                            <span class="@(ViewContext.RouteData.Values["action"].ToString() == "Categories" ? "active " : "")">Товары</span>
+                            <span class="dropdownimage"></span>
+                        </div>
+                        </a>
+                    <div class="dropdown-content">
+                        <a asp-area="" asp-action="Coffins" asp-controller="Products" style="text-decoration:none"><span >Гробы</span></a>
+                        <a asp-area="" asp-action="Monuments" asp-controller="Products" style="text-decoration:none"><span>Монументы</span></a>
+                        <a asp-area="" asp-action="Urns" asp-controller="Products" style="text-decoration:none"><span>Урны</span></a>
+                        <a asp-area="" asp-action="Tapes" asp-controller="Products" style="text-decoration:none"><span>Ленты</span></a>
+                        <a asp-area="" asp-action="Crosses" asp-controller="Products" style="text-decoration:none"><span>Кресты</span></a>
+                        <a asp-area="" asp-action="Clothes" asp-controller="Products" style="text-decoration:none"><span>Одежда</span></a>
+                    </div>
+                </li>
+                <li><a asp-area="" asp-action="Services" asp-controller="Services" style="text-decoration:none"><span class="@(ViewContext.RouteData.Values["action"].ToString() == "Services" ? "active" : "")">Услуги</span></a></li>
+                <li><a asp-area="" asp-action="AboutCompany" asp-controller="Home" style="text-decoration:none"><span class="@(ViewContext.RouteData.Values["action"].ToString() == "AboutCompany" ? "active" : "")">О компании</span></a></li>
+                <li><a asp-area="" asp-action="Cemetries" asp-controller="InfoMap" style="text-decoration:none"><span class="@(ViewContext.RouteData.Values["action"].ToString() == "Cemetries" ? "active" : "")">Кладбища</span></a></li>
+                <li><a asp-area="" asp-action="Morgues" asp-controller="InfoMap" style="text-decoration:none"><span class="@(ViewContext.RouteData.Values["action"].ToString() == "Morgues" ? "active" : "")">Морги</span></a></li>
+                <li class="dropdown">
+                    <button class="dropbtn" style="margin:0px;padding:0px"></button>
+                    <div class="dropdown-content">
+                        <a asp-action="Reviews" asp-controller="Home" style="text-decoration:none"><span>Отзывы</span></a>
+                        <a asp-action="Cemetries" asp-controller="Home" style="text-decoration:none"><span>Контакты</span></a>
+                        <a asp-action="RitualAgents" asp-controller="Home" style="text-decoration:none"><span>Ритуальные агенты</span></a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div >
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+    <div class="bottom-panel">
+        <div class="bottom-panel-group">
+            <div>
+                <span>Для предложений</span>
+            </div>
+            <div>
+                <a class="emailA" target="_self" href="mailto:marat-559@mail.ru">
+                    <span>marat-559@mail.ru</span>
+                </a>
+                
+            </div>
+            <div style="margin-top:15px; margin-bottom:15px">
+                <a class="telephoneA" target="_self" href="tel:8(800)888-88-88">
+                    <span>8 (800) 888-88-88</span>
+                </a>
+            </div>
+        </div>
+        <div class="separator"></div>
+        <div class="bottom-panel-group">
+            <div class="panel-item">
+                <span class="RitualB">Ритуал</span>
+                <span>г. Казань ул. Декабирстов, д.10</span>
+            </div>
+            <div>
+                <span>Памятники и ритуальные принадлежности</span>
+            </div>
+        </div>
+        <div class="separator"></div>
+        <div>
+            <a asp-area="" asp-action="Privacy" asp-controller="Home" style="text-decoration:none"><span>Политика конфиденциальности</span></a>
+        </div>
+    </div>
+    <div id="contactModal" class="modal">
+        
+        <div class="modal-content">
+            <button class="close" id="closebut">&times;</button>
+            <div class="inmodal">
+                <h2>Контактная информация</h2>
+                <div class="section">
+                    <div>
+                        <p>Режим работы:</p>
+                        <p>Пн-Пт: с 8 до 18</p>
+                        <p>Суббота: с 8 до 16</p>
+                    </div>
+                </div>
+                <div class="section">
+                    <a style="text-decoration:none; color:black" target="_self" href="tel:8(800)888-88-88">
+                        <h2>8 (800) 888-88-88</h2>
+                    </a>
+                </div>
+                <div class="section">
+                    <p>
+                        <a href="https://wa.me/843222222" target="_blank"
+                        class="socLinks">WhatsApp</a> |
+                        <a href="https://t.me/username" target="_blank"
+                           class="socLinks">Telegram</a>
+                    </p>
+                </div>
+                <div class="section">
+                    <p class="marginp">Для предложений</p>
+                </div>
+                <div class="section">
+                    
+                    <a href="mailto:marat-559@mail.ru">marat-559@mail.ru</a>
+                </div>
+                <div class="section">
+                    <p class="marginp">Наше местоположение</p>
+                </div>
+                <div class="section">
+                    <p>г. Казань, ул. Декабристов , 45</p>
+                </div>
+                    <div class="social-menu">
+                        <ul>
+                            <li><a href=""><i class="fa fa-telegram"></i></a></li>
+                            <li><a href=""><i class="fa fa-vk"></i></a></li>
+                            <li><a href=""><i class="fa fa-whatsapp"></i></a></li>
+
+                        </ul>
+                    </div>
+            </div>
+           
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

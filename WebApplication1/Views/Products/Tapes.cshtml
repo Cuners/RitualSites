@@ -1,0 +1,204 @@
+﻿@model IEnumerable<RitualServer.Model.Tape>
+@{
+    ViewBag.Title = "Траурные ленты";
+    var minPrice = 0.0;
+    var maxPrice = 0.0;
+    var currentMinPrice = 0.0;
+    var currentMaxPrice = 0.0;
+
+    if (Model.Any())
+    {
+        minPrice = Model.Min(c => c.Product.Price);
+        maxPrice = Model.Max(c => c.Product.Price);
+        currentMinPrice = minPrice;
+        currentMaxPrice = maxPrice;
+    }
+}
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/ProductsPagesStyle.css" asp-append-version="true" />
+</head>
+<div class="containerin">
+
+    <div class="filters-container">
+
+        <form id="filterForm" method="get" class="filter" action="@Url.Action("Tapes", "Products")">
+            <div class="custom-wrapper">
+                <div class="header">
+                    <h2 class="projtitle">
+                        Цена
+                    </h2>
+                </div>
+
+                <div class="price-input-container">
+                    <div class="price-content">
+                        <p id="min-value">@currentMinPrice</p>
+                        <p id="max-value">@currentMaxPrice</p>
+                    </div>
+
+                    <div class="range-slider">
+                        <div class="range-fill"></div>
+
+                        <input type="range"
+                               class="min-price"
+                               value="@currentMinPrice"
+                               min="@minPrice"
+                               max="@maxPrice"
+                               step="1" />
+                        <input type="range"
+                               class="max-price"
+                               value="@currentMaxPrice"
+                               min="@minPrice"
+                               max="@maxPrice"
+                               step="1" />
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <button type="button" id="toggleColorFilter" class="toggle-filters">
+
+                        <div style="display:inline">
+                            <span>Цвет</span>
+                            <span class="dropdownimage"></span>
+                        </div>
+                        </>
+                    </button>
+                    <div id="colorFiltersContainer" style="display: none; margin-top: 10px;">
+                        @foreach (var category in Model)
+                        {
+                            <label><input type="checkbox" class="colorFilter" value="@category.Color.Name" /><span>@category.Color.Name</span></label>
+                        }
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <button type="button" id="toggleMaterialFilter" class="toggle-filters">
+
+                        <div style="display:inline">
+                            <span>Материал</span>
+                            <span class="dropdownimage"></span>
+                        </div>
+                        </>
+                    </button>
+                    <div id="materialFiltersContainer" style="display: none; margin-top: 10px;">
+                        @foreach (var category in Model)
+                        {
+                            <label><input type="checkbox" class="materialFilter" value="@category.Material.Name" /><span>@category.Material.Name</span></label>
+                        }
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="reset-filters" onclick="resetFilters()">Сбросить фильтры</button>
+        </form>
+
+
+
+    </div>
+    <div id="tapeListContainer">
+        @Html.Partial("TapeListPartial", Model)
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    let minValue = document.getElementById("min-value");
+    let maxValue = document.getElementById("max-value");
+
+    const rangeFill = document.querySelector(".range-fill");
+
+    function getSelectedColors() {
+        let selectedColors = [];
+        document.querySelectorAll('.colorFilter:checked').forEach((checkbox) => {
+            selectedColors.push(checkbox.value);
+        });
+        return selectedColors;
+    }
+    function getSelectedMaterials() {
+        let selectedMaterials = [];
+        document.querySelectorAll('.materialFilter:checked').forEach((checkbox) => {
+            selectedMaterials.push(checkbox.value);
+        });
+        return selectedMaterials;
+    }
+    function validateRange() {
+        let minPrice = parseInt(inputElements[0].value);
+        let maxPrice = parseInt(inputElements[1].value);
+
+        // Ensure minPrice is always less than or equal to maxPrice
+        if (minPrice > maxPrice) {
+            [minPrice, maxPrice] = [maxPrice, minPrice];
+            inputElements[0].value = minPrice;
+            inputElements[1].value = maxPrice;
+        }
+
+        const minPercentage = ((minPrice - @minPrice) / (@maxPrice - @minPrice)) * 100;
+        const maxPercentage = ((maxPrice - @minPrice) / (@maxPrice - @minPrice)) * 100;
+
+        rangeFill.style.left = minPercentage + "%";
+        rangeFill.style.width = maxPercentage - minPercentage + "%";
+
+        minValue.innerHTML = minPrice + " ₽";
+        maxValue.innerHTML = maxPrice + " ₽";
+    }
+
+    function sendAjaxRequest() {
+        let minPrice = parseInt(inputElements[0].value);
+        let maxPrice = parseInt(inputElements[1].value);
+        let colorFilter = getSelectedColors();
+        let materialFilter = getSelectedMaterials();
+        // AJAX запрос для обновления списка
+        $.ajax({
+            url: '@Url.Action("Tapes", "Products")',
+            type: 'GET',
+            traditional: true,
+            data: { minPrice: minPrice, maxPrice: maxPrice, colorFilter: colorFilter, materialFilter: materialFilter },
+            success: function (result) {
+                $('#tapeListContainer').html(result);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.error("Ошибка при загрузке данных: " + textStatus, errorThrown);
+            }
+        });
+    }
+
+    const inputElements = document.querySelectorAll("input[type='range']");
+
+    // Добавление обработчика события для каждого элемента ввода
+    inputElements.forEach((element) => {
+        element.addEventListener("input", validateRange);
+        element.addEventListener("mouseup", sendAjaxRequest);
+        element.addEventListener("touchend", sendAjaxRequest);
+    });
+
+    // Добавление обработчика события для каждого чекбокса
+    document.querySelectorAll('.colorFilter').forEach((checkbox) => {
+        checkbox.addEventListener('change', sendAjaxRequest);
+    });
+    document.querySelectorAll('.materialFilter').forEach((checkbox) => {
+        checkbox.addEventListener('change', sendAjaxRequest);
+    });
+    // Обработчик для переключения видимости фильтров по материалам
+    document.getElementById("toggleColorFilter").addEventListener("click", function () {
+        const filterGroup = document.getElementById("colorFiltersContainer");
+        filterGroup.style.display = (filterGroup.style.display === "none") ? "block" : "none";
+    });
+    document.getElementById("toggleMaterialFilter").addEventListener("click", function () {
+        const filterGroup = document.getElementById("materialFiltersContainer");
+        filterGroup.style.display = (filterGroup.style.display === "none") ? "block" : "none";
+    });
+    // Первоначальный вызов validateRange для установки начальных значений
+    validateRange();
+
+    function resetFilters() {
+        document.querySelector(".min-price").value = @minPrice;
+        document.querySelector(".max-price").value = @maxPrice;
+        document.querySelectorAll('.colorFilter').forEach((checkbox) => {
+            checkbox.checked = false;
+        });
+        document.querySelectorAll('.materialFilter').forEach((checkbox) => {
+            checkbox.checked = false;
+        });
+        validateRange();
+        sendAjaxRequest();
+    }
+</script>

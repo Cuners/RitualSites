@@ -1,0 +1,415 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+.navigation-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f0f0f0;
+    padding-left: 80px; /* отступы слева и справа */
+    padding-right: 80px;
+    padding-top: 20px;
+    padding-bottom:20px;
+    border-radius: 10px; /* увеличиваем радиус скругления */
+}
+
+.left-section {
+    flex: 1;
+}
+    .left-section span {
+        color: #464746;
+        font-weight:500;
+    }
+.right-section {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end; /* Выравниваем элементы по правому краю */
+    align-items: center; /* Добавляем, чтобы элементы выровнялись по вертикали */
+}
+.hotline {
+    display: flex;
+    align-items: center; /* выравниваем содержимое по вертикали */
+}
+.hotline span {
+    margin-right:10px;
+}
+.spanhotline {
+    color: gray;
+}
+.hotline a {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.additional-info {
+    margin-left: 10px; /* Добавляем отступ между элементами */
+}
+
+.more-button {
+    padding: 5px 10px;
+    background-color: #f0f0f0;
+    color: black;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1px solid; /* добавляем границу */
+    border-color:gray;
+}
+.navigation-panel2 {
+    display: flex;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index:999;
+    border: 1px solid; /* добавляем границу */
+    border-color: lightgray;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    border-radius: 5px;
+    padding-left: 80px; /* отступы слева и справа */
+    padding-right: 80px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+   
+}
+
+.no-sticky {
+    position: static !important;
+}
+.logo a {
+    text-decoration: none;
+}
+.spanLogo1 {
+    font-size: 25px;
+    font-weight: bold;
+    color:black;
+}
+.spanLogo2{
+    color:gray;
+}
+.menu {
+    position: sticky;
+}
+.menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+   
+}
+
+.menu li {
+    display: inline;
+    margin-left: 40px;
+}
+    .menu span {
+        font-size: 20px;
+        color: #464746;
+        font-weight: bold;
+        transition: color 0.3s ease; 
+    }
+    .menu li:first-child {
+        margin-left: 0;
+    }
+
+.menu a {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    font-size: 16px;
+}
+.active {
+    color: gold;
+    font-weight: bold;
+}
+    .menu a {
+        text-decoration: none;
+        color: #000;
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    .menu span:hover {
+        color: gold;
+    }
+.menu span.active {
+    color: gold;
+    font-weight: bold;
+}
+.dropbtn {
+    background-color: transparent;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/2048px-Hamburger_icon.svg.png');
+    background-repeat: no-repeat;
+    position: absolute;
+    background-position: center;
+    background-size: contain;
+    width: 30px;
+    height: 30px;
+    border: none;
+    cursor: pointer;
+    transform: translateX(-100%);
+}
+
+/* контейнер <div> - необходим для размещения выпадающего содержимого */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    opacity:0;
+    visibility:collapse;
+    transition: opacity 0.3s ease, width 0.3s ease; /* Добавлен переход для width */
+    width: 0px;
+    height:0px;
+}
+
+    .dropdown:hover .dropdown-content,
+    .dropdown-content:hover {
+        opacity: 1;
+        visibility:visible;
+        width: 160px;
+        height:auto;
+    }
+
+.dropdown-content span {
+    color: black;
+    text-decoration: none;
+    display: block;
+    font-size: 15px;
+    padding: 5px;
+    font-weight: 500;
+}
+
+    .dropdown-content span:hover {
+        background-color: #f1f1f1;
+    }
+/* Изменить цвет фона выпадающего кнопка при отображении выпадающего списка */
+.dropdown:hover .dropbtn {
+    background-color: #f1f1f1;
+}
+.dropdownimage {
+    display: inline-block; /* чтобы размеры применялись */
+    width: 12px;
+    height: 12px;
+    margin-left: 7px;
+    background-image: url(https://mos-funeral-homes.oml.ru/d/moredrop.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: scroll;
+    filter: invert(70%);
+}
+@media only screen and (max-width: 600px) {
+    .logo{
+        display:none;
+    }
+    .menu li {
+        display: none; /* Скрываем элементы меню на мобильных устройствах */
+    }
+
+    .dropdown-btn {
+        display: block; /* Показываем кнопку на мобильных устройствах */
+    }
+    .navigation-panel {
+        flex-direction: column; /* Столбцовая компоновка на мобильных устройствах */
+    }
+
+    .left-section,
+    .right-section {
+        margin-bottom: 0; /* Удаляем отступ между секциями на мобильных устройствах */
+    }
+
+    .right-section {
+        align-items: center; /* Выравнивание элементов по центру */
+    }
+
+    .hotline {
+        margin-bottom: 10px; /* Добавляем отступ между элементами внутри правой секции */
+    }
+}
+.bottom-panel {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f0f0f0;
+    color: black;
+    padding-left: 80px; /* отступы слева и справа */
+    padding-right: 80px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.bottom-panel-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.separator {
+    height: 1px;
+    background-color: lightgray;
+    margin: 5px 0;
+}
+.telephoneA{
+    text-decoration:none;
+    color:black;
+    margin-top:30px;
+}
+.emailA {
+    text-decoration: none;
+    color: dodgerblue;
+}
+.RitualB {
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+}
+.panel-item {
+    justify-content: space-between;
+}
+    .bottom-panel a:hover {
+        text-decoration: underline;
+    }
+body {
+    font-family: Arial, sans-serif;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 450px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    position: relative;
+    
+}
+.inmodal {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:20px;
+    margin-bottom:45px;
+}
+.close {
+    color: #aaa;
+    float: right;
+    background: none;
+    border: none;
+    width:40px;
+    height:40px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+h2 {
+    
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.section {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+.marginp{
+    margin:0;
+}
+.social-menu {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+.social-menu ul {
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+    .social-menu ul li {
+        list-style: none;
+        margin: 0 20px;
+    }
+
+        .social-menu ul li .fa {
+            color: #000000;
+            font-size: 30px;
+            line-height: 60px;
+            transition: .5s;
+        }
+
+            .social-menu ul li .fa:hover {
+                color: #ffffff;
+            }
+
+        .social-menu ul li a {
+            position: relative;
+            display: block;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: white;
+            text-align: center;
+            transition: 0.5s;
+            transform: translate(0,0px);
+            box-shadow: 0px 7px 5px rgba(0, 0, 0, 0.5);
+        }
+
+            .social-menu ul li a:hover {
+                transform: rotate(0deg) skew(0deg) translate(0, -10px);
+            }
+
+        .social-menu ul li:nth-child(1) a:hover {
+            background-color: #55acee;
+        }
+
+        .social-menu ul li:nth-child(2) a:hover {
+            background-color: #3b5999;
+        }
+
+        .social-menu ul li:nth-child(3) a:hover {
+            background-color: #5FFC7B;
+        }
+.socLinks {
+    color: #808080;
+    font-size:20px;
+}
